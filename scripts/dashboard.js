@@ -9,6 +9,12 @@ Array.from(elems("div#spa-menu button.spa-nav-button")).forEach(button => {
         currentActiveNavButton.removeAttribute("active");
         button.setAttribute("active", "");
         currentActiveNavButton = button;
+
+        if (button.id == "refresh") {
+            window.location.reload();
+            return;
+        }
+
         fadeOut(currentVisiblePage);
         setTimeout(()=>{
             currentVisiblePage = elem(`div.spa-content-container div#${button.id}`);
@@ -16,22 +22,3 @@ Array.from(elems("div#spa-menu button.spa-nav-button")).forEach(button => {
         }, 150);
     }
 })
-
-
-// Reservations Partial
-let resDateFilter = elem("input#res-date-filter");
-resDateFilter.valueAsDate = new Date();
-
-function fetchReservations() {
-    sendRequest(`api.php/reservations?date=${resDateFilter.value}`, "GET", {"Content-Type": "application/json"}, undefined, resToConsole);
-}
-
-function resToConsole(res) {
-    let reservations = res["body"];
-
-    if (reservations.length != 0) {
-        reservations.forEach(entry => {
-            console.log(entry["name"]);
-        })
-    }
-}

@@ -50,7 +50,7 @@ if (isset($_SESSION["id"])) {
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Aa" required>
         </div>
-        <button type="submit" pad good-bg white-text full-width style="border: none; text-align: center;"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;<b>Login</b></button>
+        <button type="submit" pad good-bg white-text full-width style="border: none; text-align: center; margin: 16px 0;"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;<b>Login</b></button>
     </form>
 </body>
 </html>

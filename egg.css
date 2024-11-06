@@ -4,7 +4,7 @@
     --primary-color:    #4e8bed;
     --info-color:       #17a2b8;
     --good-color:       rgb(97, 184, 97);
-    --warning-color:    #f6ca46;
+    --warning-color:    #ebbd36;
     --alert-color:      rgb(238, 165, 81);
     --danger-color:     rgb(218, 72, 72);
     --dark-color:       #333;
@@ -235,7 +235,7 @@ form input:focus {
 
 form label {
     display: block;
-    margin-bottom: .5rem;
+    margin-bottom: 8px;
 }
 /*****/
 

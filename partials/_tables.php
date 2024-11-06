@@ -1,94 +1,39 @@
 <div id="tables">
-    <h4>Tables</h4>
-    <div class="tables-container" flex="h" h-center v-center grow>
-        <div flex="v">
-            <div flex="h" class="tables-row">
+    <div flex="v">
+        <div flex="h" v-center>
+            <h4 class="partial-title">Tables</h4>
+            <button flex="h" h-center v-center primary-bg white-fr style="height: 45px; width: 50px;"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="tables-container" flex="h" h-center></div>
+    </div>
+</div>
 
-                <!--
-                    - Display unfulfilled order items per table instead, on this screen.
-                    - Display full order list with completion indicators in another screen/popup window.
-                    - Turn div.table into a partial/component template.
-                -->
-
-                <div class="table" dark-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#1</h4>
-                        <p class="status">Occupied</p>
-                    </div>
-                    <ul class="order-list">
-                        <li><i class="fa-solid fa-x" danger-fr></i>Entree #2</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Entree #6</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Dessert #4</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Dessert #5</li>
-                    </ul>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" info-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#2</h4>
-                        <p class="status">Reserved</p>
-                    </div>
-                    <ul class="order-list">
-                        <li><i>John Dela Cruz</i></li>
-                    </ul>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" good-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#3</h4>
-                        <p class="status">Open</p>
-                    </div>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" good-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#4</h4>
-                        <p class="status">Open</p>
-                    </div>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" info-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#5</h4>
-                        <p class="status">Reserved</p>
-                    </div>
-                    <ul class="order-list">
-                        <li><i>Kate Go</i></li>
-                    </ul>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" warning-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#6</h4>
-                        <p class="status">Bill Out</p>
-                    </div>
-                    <ul class="order-list">
-                        <li><i>All Complete</i></li>
-                    </ul>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" dark-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#7</h4>
-                        <p class="status">Occupied</p>
-                    </div>
-                    <ul class="order-list">
-                        <li><i class="fa-solid fa-x" danger-fr></i>Entree #2</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Entree #3</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Entree #6</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Dessert #4</li>
-                        <li><i class="fa-solid fa-x" danger-fr></i>Dessert #5</li>
-                    </ul>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
-                <div class="table" danger-bg>
-                    <div class="table-header">
-                        <h4 no-margin>#8</h4>
-                        <p class="status">Unavailable</p>
-                    </div>
-                    <div class="open-indicator"><i class="fa-solid fa-square-caret-right"></i></div>
-                </div>
+<div class="table-modal" full-height full-width flex="h" h-center v-center>
+    <div class="table-info-container" border-radius dark-bg>
+        <div class="modal-header" flex="h" v-center>
+            <div flex="h" v-center grow>
+                <h4 id="modal-title" no-margin white-fr></h4>
+                <p id="status-title" no-margin></p>
             </div>
+            <button id="delete-table" pad danger-bg dark-bg danger-fr>Delete Table</button>
+            <select id="status-dropdown" white-fr primary-bg onchange="authCheck(this)">
+                <option value="NULL">Set Status</option>
+                <option value="1" good-bg>Open</option>
+                <option value="2" dark-bg>Occupied</option>
+                <option value="3" warning-bg>Bill Out</option>
+                <option value="4" info-bg>Reserved</option>
+                <option value="5" danger-bg>Unavailable</option>
+            </select>
+            <button id="close-modal" pad dark-bg style="height: 100; width: 50px;"><i class="fa-solid fa-x" white-fr></i></button>
+        </div>
+        <div class="modal-body">
+            <h4 no-margin>Orders</h4>
+            <ul class="order-list"></ul>
+            <b>Special Requests</b>
+            <ul class="requests"></ul>
+        </div>
+        <div class="modal-footer" flex="h" v-center h-end>
+            
         </div>
     </div>
 </div>

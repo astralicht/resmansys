@@ -16,17 +16,12 @@ try {
 
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
-if (count($rows) < 1) {
+if (count($rows) < 1 || !password_verify($password, $rows[0]["password"])) {
     header("Location: login.php?e=auth-invalid");
     return;
 }
 
 $user = $rows[0];
-
-if (!password_verify($password, $user["password"])) {
-    header("Location: login.php?e=auth-invalid");
-    return;
-}
 
 session_start();
 $_SESSION["id"] = $user["id"];
