@@ -39,10 +39,8 @@ async function asyncFetch(
         "body": body,
     });
 
-    if (!response.ok) {
-        return {"status": response.status, "message": "Fetch failed. Check server availability."}
+    if (response.ok) {
+        let json = await response.json();
+        return json;
     }
-
-    let json = await response.json();
-    return json;
 }

@@ -11,7 +11,7 @@ if (isset($_SESSION["id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="egg.css">
-    <title>Login | Restaurant MS</title>
+    <title>Login | Kaen Management </title>
     <style type="text/css">
         * {
             border-radius: var(--border-radius);
@@ -40,7 +40,7 @@ if (isset($_SESSION["id"])) {
 </head>
 <body full-height full-width flex="h" v-center h-center>
     <form action="auth.php" method="POST" id="login" flex="v" h-center pad>
-        <h3>RMS Login</h3>
+        <h3>Kaen Management</h3>
         <p id="message" white-text pad full-width></p>
         <div full-width>
             <label for="username">Username</label>

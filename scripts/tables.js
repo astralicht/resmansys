@@ -141,27 +141,12 @@ function authCheck(selectElem) {
                 break;
             }
 
-            sendRequest(
+            let response = asyncFetch(
                 `api.php?auth=check&username=${username}&password=${password}`,
                 "GET",
-                {"Content-Type": "application/json"},
-                undefined,
-                updateTableStatus
-            );
+                {"Content-Type": "application/json"}
+            )
 
             break;
     }
-}
-
-function updateTableStatus(response) {
-    if (response["status"] == "200") {
-        sendRequest(
-            `api.php?table=${}`,
-            "GET",
-            {"Content-Type": "application/json"},
-            undefined,
-            updateTableStatus
-        );
-    }
-    // window.location.reload();
 }
