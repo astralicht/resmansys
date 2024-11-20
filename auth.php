@@ -1,8 +1,8 @@
 <?php
 include_once("db.php");
 
-$username = $_POST["username"];
-$password = $_POST["password"];
+$username = htmlspecialchars($_POST["username"]);
+$password = htmlspecialchars($_POST["password"]);
 
 $query = "SELECT * FROM users WHERE `username`=:username";
 
@@ -10,14 +10,14 @@ try {
     $query = $dbConn->prepare($query);
     $query->execute([":username" => $username]);
 } catch (PDOException $e) {
-    echo $e->getMessage();
+    echo json_encode(["status" => "500", "message" => "Internal server error", "exception" => $e]);
     return;
 }
 
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 if (count($rows) < 1 || !password_verify($password, $rows[0]["password"])) {
-    header("Location: login.php?e=auth-invalid");
+    echo json_encode(["status" => "401", "message" => "Invalid auth"]);
     return;
 }
 
@@ -27,5 +27,5 @@ session_start();
 $_SESSION["id"] = $user["id"];
 $_SESSION["username"] = $user["username"];
 
-header("Location: dashboard.php");
+echo json_encode(["status" => "200", "message" => "Valid auth"]);
 return;
